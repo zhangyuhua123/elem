@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <style type="text/css">
+    body, html,#allmap {width: 100%;height: 100%;overflow: hidden;margin:0;font-family:"微软雅黑";}
+    #allmap{
+        height:400px;
+    }
+    </style>
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=0933b0c4da0af91731e5dd9ffbc58511"></script>
+    <title>地图展示</title>
+</head>
+<body>
+    <div id="allmap"></div>
+</body>
+</html>
+<script type="text/javascript">
+    // 百度地图API功能
+   /* var map = new BMap.Map("allmap"); // 创建Map实例
+    var point = new BMap.Point(121.48735309999999,31.380148300000002)
+    map.centerAndZoom(point, 15)  // 初始化地图,设置中心点坐标和地图级别
+    var market = new BMap.Market();
+    map.addOverlay(marker);               // 将标注添加到地图中
+    marker.setAnimation(BMAP_ANIMATION_BOUNCE); //跳动的动画*/
+
+    var map = new BMap.Map("allmap");
+    var point = new BMap.Point(121.48735309999999,31.380148300000002);
+    map.centerAndZoom(point, 15);
+    var marker = new BMap.Marker(point);  // 创建标注
+    //创建小狐狸
+    var myIcon = new BMap.Icon("http://developer.baidu.com/map/jsdemo/img/fox.gif", new BMap.Size(300,157));
+    var marker = new BMap.Marker(point,{icon:myIcon});  // 创建标注
+    map.addOverlay(marker);              // 将标注添加到地图中
+    //map.addOverlay(marker);               // 将标注添加到地图中
+    marker.setAnimation(BMAP_ANIMATION_BOUNCE); //跳动的动画
+     var local =  new BMap.LocalSearch(map, {renderOptions: {map: map, autoViewport: false}});
+    local.searchNearby('餐馆',point,1000);
+
+
+
+
+</script>
